@@ -13,6 +13,8 @@ class AppTest {
 
     private String successLabel = "not successful";
 
+    String dataPrefix = "/src/main/resources/de/exxcellent/challenge/";
+
     @BeforeEach
     void setUp() {
         successLabel = "successful";
@@ -25,12 +27,12 @@ class AppTest {
 
     @Test
     void runFootball() {
-        App.main("football.csv", "FOOTBALL");
+        App.main(dataPrefix + "football.csv", "FOOTBALL");
     }
 
     @Test
     void runWeather() {
-        App.main("weather.csv", "WEATHER");
+        App.main(dataPrefix + "weather.csv", "WEATHER");
     }
 
 }

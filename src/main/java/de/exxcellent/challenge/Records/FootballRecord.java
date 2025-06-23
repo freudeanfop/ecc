@@ -21,13 +21,13 @@ public class FootballRecord implements Record{
         this.losses = Integer.valueOf(record[3]);
         this.draws = Integer.valueOf(record[4]);
         this.goals = Integer.valueOf(record[5]);
-        this.goalsAllowed = Integer.valueOf(record[7]);
+        this.goalsAllowed = Integer.valueOf(record[6]);
         this.points = Integer.valueOf(record[7]);
     }
 
     @Override
     public void printRecord(){
-        System.out.printf("Team: %s", this.team);
+        System.out.printf("Team: %s \n", this.team);
     }
 
     @Override

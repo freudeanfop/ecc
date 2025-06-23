@@ -21,7 +21,9 @@ public final class App {
             System.err.println("Please specify the filename of the csv as well as the recordtype");
             System.exit(1);
         }
-        String filename = args[0];
+        
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filename = currentWorkingDirectory + args[0];
         RecordType recordtype = RecordType.valueOf(args[1]);
 
         CsvParser parser = new CsvParser();
@@ -45,10 +47,8 @@ public final class App {
                 bestRecord = r;
             }
         }
-
-        System.out.println("Best record (lowest ranking):");
+        
         bestRecord.printRecord();
-        System.out.println("Ranking value: " + bestRanking);
     
     }
 }
