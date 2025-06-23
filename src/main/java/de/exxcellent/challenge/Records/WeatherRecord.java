@@ -17,34 +17,34 @@ public class WeatherRecord implements Record{
     float r;
     float avgSLP;
 
-    public WeatherRecord(int day, int maxTemp, int minTemp, float avgTemp, float avgDewPoint,
-                         int oneHrPrecipitation, int pDirection, float avgSpeed, int windDir,
-                         int maxSpeed, float skyCover, int maxRain, int minRain,
-                         float r, float avgSLP) {
-        this.day = day;
-        this.maxTemp = maxTemp;
-        this.minTemp = minTemp;
-        this.avgTemp = avgTemp;
-        this.avgDewPoint = avgDewPoint;
-        this.oneHrPrecipitation = oneHrPrecipitation;
-        this.pDirection = pDirection;
-        this.avgSpeed = avgSpeed;
-        this.windDir = windDir;
-        this.maxSpeed = maxSpeed;
-        this.skyCover = skyCover;
-        this.maxRain = maxRain;
-        this.minRain = minRain;
-        this.r = r;
-        this.avgSLP = avgSLP;
+    public WeatherRecord(String[] record) {
+        
+        // ensure max Temp >= min Temp
+        // int,int,int,float,float,int,int,float,int,int,float,int,int,float,float
+        this.day = Integer.valueOf(record[0]);
+        this.maxTemp = Integer.valueOf(record[0]);
+        this.minTemp = Integer.valueOf(record[0]);
+        this.avgTemp = Float.valueOf(record[0]);
+        this.avgDewPoint = Float.valueOf(record[0]);
+        this.oneHrPrecipitation = Integer.valueOf(record[0]);
+        this.pDirection = Integer.valueOf(record[0]);
+        this.avgSpeed = Float.valueOf(record[0]);
+        this.windDir = Integer.valueOf(record[0]);
+        this.maxSpeed = Integer.valueOf(record[0]);
+        this.skyCover = Float.valueOf(record[0]);
+        this.maxRain = Integer.valueOf(record[0]);
+        this.minRain = Integer.valueOf(record[0]);
+        this.r = Float.valueOf(record[0]);
+        this.avgSLP = Float.valueOf(record[0]);
     }
 
     @Override
     public void printRecord(){
-
+        System.out.printf("Day: %s", this.day);
     }
 
     @Override
     public int computeRanking(){
-
+        return this.maxTemp - this.minTemp;
     }
 }

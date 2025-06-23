@@ -8,11 +8,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 /*
-*   Abstract Parser Interface declaring method for parsing
-*   Parsers should extend this interface
+*   Parser Interface declaring method for parsing
+*   All Parsers should implement this interface
 */
 public interface DataParser {
-    List<Records> parse(String filename) throws Exception;
+    List<Record> parse(String filename, RecordType type);
 }
+
+

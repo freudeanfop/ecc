@@ -1,5 +1,7 @@
 package de.exxcellent.challenge;
 
+import java.util.List;
+
 /**
  * The entry class for your solution. This class is only aimed as starting point and not intended as baseline for your software
  * design. Read: create your own classes and packages as appropriate.
@@ -14,12 +16,39 @@ public final class App {
      */
     public static void main(String... args) {
 
-        // Your preparation code …
+        //Parse arguments, declaring filename and recordtype
+        if (args.length < 2) {
+            System.err.println("Please specify the filename of the csv as well as the recordtype");
+            System.exit(1);
+        }
+        String filename = args[0];
+        RecordType recordtype = RecordType.valueOf(args[1]);
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
-        System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
+        CsvParser parser = new CsvParser();
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
-        System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
+        //Parse file and get records
+        List<Record> records = parser.parse(filename, recordtype);
+
+        if (records == null || records.isEmpty()) {
+            System.out.println("No records found.");
+            return;
+        }
+
+        // Rank records and get lowest scoring Entry
+        Record bestRecord = records.get(0);
+        int bestRanking = bestRecord.computeRanking();
+
+        for (Record r : records) {
+            int ranking = r.computeRanking();
+            if (ranking < bestRanking) {
+                bestRanking = ranking;
+                bestRecord = r;
+            }
+        }
+
+        System.out.println("Best record (lowest ranking):");
+        bestRecord.printRecord();
+        System.out.println("Ranking value: " + bestRanking);
+    
     }
 }
