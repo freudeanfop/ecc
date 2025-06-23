@@ -47,8 +47,8 @@ public final class App {
                 bestRecord = r;
             }
         }
-        
-        bestRecord.printRecord();
+
+        bestRecord.printRecordIdentifier();
     
     }
 }

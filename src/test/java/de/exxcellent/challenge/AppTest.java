@@ -15,24 +15,35 @@ class AppTest {
 
     String dataPrefix = "/src/main/resources/de/exxcellent/challenge/";
 
-    @BeforeEach
-    void setUp() {
-        successLabel = "successful";
+
+    
+    @Test
+    void runCheckFakeEntries() {
+        App.main(dataPrefix + "footballFakeEntry.csv", "FOOTBALL");
     }
 
     @Test
-    void aPointlessTest() {
-        assertEquals("successful", successLabel, "My expectations were not met");
+    void runFileNotExisiting() {
+        App.main(dataPrefix + "weather2.csv", "WEATHER");
     }
+    
 
     @Test
-    void runFootball() {
-        App.main(dataPrefix + "football.csv", "FOOTBALL");
+    void runWrongEnum() {
+        App.main(dataPrefix + "weather.csv", "FOOTBALL");
     }
 
     @Test
     void runWeather() {
         App.main(dataPrefix + "weather.csv", "WEATHER");
     }
+
+
+    @Test
+    void runFootball() {
+        App.main(dataPrefix + "football.csv", "FOOTBALL");
+    }
+    
+    
 
 }
