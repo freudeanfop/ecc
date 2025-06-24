@@ -13,7 +13,7 @@ import java.util.HashMap;
 *   All Parsers should implement this interface
 */
 public interface DataParser {
-    List<Record> parse(String filename, RecordType type);
+    List<Record> parseFileContainingRecordType(String filename, RecordType type);
 }
 
 

@@ -29,25 +29,27 @@ public final class App {
         CsvParser parser = new CsvParser();
 
         //Parse file and get records
-        List<Record> records = parser.parse(filename, recordtype);
+        List<Record> records = parser.parseFileContainingRecordType(filename, recordtype);
 
         if (records == null || records.isEmpty()) {
+            System.out.println("For file " + filename + "and RecordType " + recordtype + ":" );
             System.out.println("No records found.");
             return;
         }
 
-        // Rank records and get lowest scoring Entry
+        // Rank records and get lowest scoring entry
         Record bestRecord = records.get(0);
-        int bestRanking = bestRecord.computeRanking();
+        int bestRanking = bestRecord.computeRankingValue();
 
         for (Record r : records) {
-            int ranking = r.computeRanking();
+            int ranking = r.computeRankingValue();
             if (ranking < bestRanking) {
                 bestRanking = ranking;
                 bestRecord = r;
             }
         }
 
+        System.out.println("For file " + filename + " and RecordType " + recordtype + ":" );
         bestRecord.printRecordIdentifier();
     
     }
